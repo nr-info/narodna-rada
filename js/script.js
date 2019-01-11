@@ -74,13 +74,13 @@ function search(){
                             <img src="'+lsD[key].photo+'" alt="'+lsD[key].full_name+'" class="img-responsive img-circle" />\n\
                         </div>\n\
                         <div class="col-xs-12 col-sm-9">\n\
-                            <span class="name">'+lsD.[key].full_name+'</span><br/>\n\
+                            <span class="name">'+lsD[key].full_name+'</span><br/>\n\
                             </div>\n\
                         <div class="clearfix"></div>\n\
                     </li>');
+        }
             
-        }}
-            );
+    });
     
 }
 
