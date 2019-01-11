@@ -1,0 +1,84 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
+    <div class="container py-5 my-5">
+        <div class="row text-center pb-4">
+            <div class="col-md-12">
+                <h2 class="text-white siyah-cerceve">Kiralık Otobüs Ara, Firmalar, Araçlar</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card acik-renk-form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="oblact">Область</label>
+                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="loadSelectR1(this)"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть область</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="regione">Район</label>
+                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть район</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="np">Населиний пункт</label>
+                                    <select id="np" class="form-control" data-s="3"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть населений пункт</small>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="font-weight-light text-dark">Або ведіть П.І.Б депутата</p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group ">
+                                    <input type="text" id="deputat_search" class="form-control" placeholder="Наприклад: Стеценко Станіслав Володимирович">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ul class="list-group" id="ls_deputat">
+    <li class="list-group-item">
+        <div class="col-xs-12 col-sm-3">
+            <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <span class="name">Scott Stevens</span><br/>
+            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
+            <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>
+            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>
+            <span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br/></span>
+            <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="scott.stevens@example.com"></span>
+            <span class="visible-xs"> <span class="text-muted">scott.stevens@example.com</span><br/></span>
+            
+        </div>
+        <div class="clearfix"></div>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    $().ready(function() {
+        loadSelectRegione("#oblact","regione");
+    });
+    
+    
+    
+</script>
