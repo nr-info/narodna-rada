@@ -1,3 +1,14 @@
+/* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+#map{
+    min-height: 30rem;
+}
+/* Optional: Makes the sample page fill the window. */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 a:focus{
     outline: none;
 }
@@ -30,11 +41,8 @@ a:focus{
 .header{
     text-align: center;
     margin: 1rem auto;
+    height: 2rem;
     font-weight: bold !important;
-}
-.info{
-    overflow: auto;
-    max-width: 100%;
 }
 .toolbar{
     margin: 1rem 0;
@@ -71,8 +79,11 @@ a:focus{
 .footer-icon{
     height: 20px;
 }
-.info{
+.info {
     margin: 2rem auto;
+    min-height: calc(100vh - 13rem);
+    max-width: 100%;
+    max-height: 100%;
 }
 .video-container {
     position:relative;
@@ -88,4 +99,7 @@ a:focus{
     left:0;
     width:100%;
     height:100%;
+}
+.search-banner{
+    padding-bottom: 1rem;
 }

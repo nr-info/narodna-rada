@@ -6,13 +6,13 @@
 
 
 
-<section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
-    <div class="container py-5 my-5">
-        <div class="row text-center pb-4">
+<section class="search-banner text-white form-arka-plan" id="search-banner">
+    <div class="container">
+        <!-- div class="row text-center pb-4">
             <div class="col-md-12">
                 <h2 class="text-white siyah-cerceve">Kiralık Otobüs Ara, Firmalar, Araçlar</h2>
             </div>
-        </div>
+        </div -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card acik-renk-form">
@@ -55,10 +55,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="map"></div>
+            </div>
+        </div>
     </div>
 </section>
-<div id="map"></div>
-<ul class="list-group" id="ls_deputat"></ul>
+<div class="list-group container" id="ls_deputat"></div>
 <script>
     var map;
     function initMap() {

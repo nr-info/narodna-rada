@@ -34,12 +34,12 @@ function search(){
     text = $("#deputat_search").val();
     console.info(text);
     //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
-    var url = 'db/deputat/mps-data.json';
+    let url = 'db/deputat/mps-data.json';
     $.getJSON(url, function (json) {
         json = json.mps
         var lsD = json;
         if(v2 && text){
-            for (key in json) {
+            for (let key in json) {
                 b1 = true;
                 b2 = true;
                 if(v2){
@@ -62,24 +62,32 @@ function search(){
         
         var box_ls = $("#ls_deputat");
         
-        for (key in lsD) {
+        for (let key in lsD) {
             
-            li1_files = "";
+            let li1_files = "";
             
 //            for (key1 in lsD[key].files) {
 //                li1_files +=   '<a href="'+json.list[key].files[key].adress+'" download>\n\
 //                                    <img src="/img/file/'+json.list[key].files[key].type+'.png" alt="'+json.list[key1].name+'" class="img-responsive img-circle" /></a>'
 //            }
-            box_ls.append('<li class="list-group-item">\n\
-                        <div class="col-xs-12 col-sm-3">\n\
-                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'" class="img-responsive img-circle" />\n\
+            // Інфографіку додавати сюди
+            box_ls.append('<div class="list-group-item row">\n\
+                        <div class="col-md-3 col-sm-12"  style="float: left;">\n\
+                            <div class="image-holder">\n\
+                                <img src="'+lsD[key].photo+'" alt="'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'" \n\
+                                class="img-responsive img-circle">\n\
+                            </div>\n\
                         </div>\n\
-                        <div class="col-xs-12 col-sm-9">\n\
+                        <div class="col-md-9 col-sm-12">\n\
                             <span class="name"><a href="?v=deputat&dep='+lsD[key].id+'">'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'</span></a><br/>\n\
                             <span class="name">'+lsD[key].obr_info +'</span><br/>\n\
-                            </div>\n\
-                        <div class="clearfix"></div>\n\
-                    </li>');
+                        </div>\n\
+                        <div class="clearfix" style="float: none;"></div>\n\
+                        <div class="col-12">\n\
+                            <!-- Інфографіку додавати сюди --!>\n\
+                            <div> Infographics should be placed here </div>\n\
+                        <\div>\n\
+                    </div>');
         }
             
     });
