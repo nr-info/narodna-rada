@@ -61,7 +61,7 @@ function search(){
         }
         
         var box_ls = $("#ls_deputat");
-        console.info(lsD);
+        
         for (key in lsD) {
             
             li1_files = "";
@@ -72,10 +72,10 @@ function search(){
 //            }
             box_ls.append('<li class="list-group-item">\n\
                         <div class="col-xs-12 col-sm-3">\n\
-                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].full_name+'" class="img-responsive img-circle" />\n\
+                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'" class="img-responsive img-circle" />\n\
                         </div>\n\
                         <div class="col-xs-12 col-sm-9">\n\
-                            <span class="name">'+lsD[key].full_name+'</span><br/>\n\
+                            <span class="name">'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'</span><br/>\n\
                             </div>\n\
                         <div class="clearfix"></div>\n\
                     </li>');
