@@ -36,7 +36,7 @@ function search(){
     //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
     var url = 'db/deputat/mps-data.json';
     $.getJSON(url, function (json) {
-        
+        json = json.mps
         var lsD = json;
         if(v2 && text){
             for (key in json) {
@@ -61,7 +61,7 @@ function search(){
         }
         
         var box_ls = $("#ls_deputat");
-        
+        console.info(lsD);
         for (key in lsD) {
             
             li1_files = "";
