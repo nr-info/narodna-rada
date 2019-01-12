@@ -34,54 +34,54 @@ function search(){
     //mps_skl_mp_parties_txt(8,list_deputats);
     
     //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
-//    var url = 'db/deputat/mps-data.json';
-//    $.getJSON(url, function (json) {
-//        json = json.mps
-//        var lsD = json;
-//        if(v2 && text){
-//            for (key in json) {
-//                b1 = true;
-//                b2 = true;
-//                if(v2){
-//                    console.info(1);
-//                    if(v2 == json[key].region_id){
-//                        b1 = false;
-//                    }
-//                }
-//
-//                if(text){
-//                    if(text == json[key].full_name){
-//                        b2 = false;
-//                    }
-//                }
-//                if (b1 && b2) {
-//                    lsD.splice(key, 1);
-//                }     
+    var url = 'db/deputat/mps-data.json';
+    $.getJSON(url, function (json) {
+        json = json.mps
+        var lsD = json;
+        if(v2 && text){
+            for (key in json) {
+                b1 = true;
+                b2 = true;
+                if(v2){
+                    console.info(1);
+                    if(v2 == json[key].region_id){
+                        b1 = false;
+                    }
+                }
+
+                if(text){
+                    if(text == json[key].full_name){
+                        b2 = false;
+                    }
+                }
+                if (b1 && b2) {
+                    lsD.splice(key, 1);
+                }     
+            }
+        }
+        
+        var box_ls = $("#ls_deputat");
+        
+        for (key in lsD) {
+            
+            li1_files = "";
+            
+//            for (key1 in lsD[key].files) {
+//                li1_files +=   '<a href="'+json.list[key].files[key].adress+'" download>\n\
+//                                    <img src="/img/file/'+json.list[key].files[key].type+'.png" alt="'+json.list[key1].name+'" class="img-responsive img-circle" /></a>'
 //            }
-//        }
-//        
-//        var box_ls = $("#ls_deputat");
-//        
-//        for (key in lsD) {
-//            
-//            li1_files = "";
-//            
-////            for (key1 in lsD[key].files) {
-////                li1_files +=   '<a href="'+json.list[key].files[key].adress+'" download>\n\
-////                                    <img src="/img/file/'+json.list[key].files[key].type+'.png" alt="'+json.list[key1].name+'" class="img-responsive img-circle" /></a>'
-////            }
-//            box_ls.append('<li class="list-group-item">\n\
-//                        <div class="col-xs-12 col-sm-3">\n\
-//                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'" class="img-responsive img-circle" />\n\
-//                        </div>\n\
-//                        <div class="col-xs-12 col-sm-9">\n\
-//                            <span class="name">'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'</span><br/>\n\
-//                            </div>\n\
-//                        <div class="clearfix"></div>\n\
-//                    </li>');
-//        }
-//            
-//    });
+            box_ls.append('<li class="list-group-item">\n\
+                        <div class="col-xs-12 col-sm-3">\n\
+                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'" class="img-responsive img-circle" />\n\
+                        </div>\n\
+                        <div class="col-xs-12 col-sm-9">\n\
+                            <span class="name">'+lsD[key].surname +" " +lsD[key].firstname +" " +lsD[key].patronymic+'</span><br/>\n\
+                            </div>\n\
+                        <div class="clearfix"></div>\n\
+                    </li>');
+        }
+            
+    });
     
 }
 
