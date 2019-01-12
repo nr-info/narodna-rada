@@ -3,6 +3,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
+
+
 <section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
     <div class="container py-5 my-5">
         <div class="row text-center pb-4">
@@ -55,24 +58,11 @@
     </div>
 </section>
 
-<ul class="list-group" id="ls_deputat">
-    <li class="list-group-item">
-        <div class="col-xs-12 col-sm-3">
-            <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
-        </div>
-        <div class="col-xs-12 col-sm-9">
-            <span class="name">Scott Stevens</span><br/>
-            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
-            <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>
-            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>
-            <span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br/></span>
-            <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="scott.stevens@example.com"></span>
-            <span class="visible-xs"> <span class="text-muted">scott.stevens@example.com</span><br/></span>
-            
-        </div>
-        <div class="clearfix"></div>
-    </li>
-</ul>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initialize" async defer></script>
+<div id="map_canvas" class="gmap-box" style="width:100%;height:500px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<ul class="list-group" id="ls_deputat"></ul>
 
 <script type="text/javascript">
     $().ready(function() {
