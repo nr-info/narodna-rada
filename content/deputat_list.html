@@ -57,12 +57,18 @@
         </div>
     </div>
 </section>
+<div id="map"></div>
+<script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+  </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initMap" async defer></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initialize" async defer></script>
-<div id="map_canvas" class="gmap-box" style="width:100%;height:500px;"></div>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
-<ul class="list-group" id="ls_deputat"></ul>
 
 <script type="text/javascript">
     $().ready(function() {

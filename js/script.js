@@ -33,6 +33,9 @@ function search(){
     
     //mps_skl_mp_parties_txt(8,list_deputats);
     
+    var v2 = $("#regione").val();
+    var text = $("#deputat_search").val();
+    
     //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
     var url = 'db/deputat/mps-data.json';
     $.getJSON(url, function (json) {
