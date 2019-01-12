@@ -33,7 +33,8 @@ function search(){
     v2 = $("#regione").val();
     text = $("#deputat_search").val();
     console.info(text);
-    var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json'
+    //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
+    var url = 'db/deputat/mps-data.json';
     $.getJSON(url, function (json) {
         
         var lsD = json;
