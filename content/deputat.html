@@ -1,0 +1,82 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+<section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
+    <div class="container py-5 my-5">
+        <div class="row text-center pb-4">
+            <div class="col-md-12">
+                <h2 class="text-white siyah-cerceve">Kiralık Otobüs Ara, Firmalar, Araçlar</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card acik-renk-form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="oblact">Область</label>
+                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="loadSelectR1(this)"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть область</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="regione">Район</label>
+                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть район</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label for="np">Населиний пункт</label>
+                                    <select id="np" class="form-control" data-s="3"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть населений пункт</small>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="font-weight-light text-dark">Або ведіть П.І.Б депутата</p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group ">
+                                    <input type="text" id="deputat_search" class="form-control" placeholder="Наприклад: Стеценко Станіслав Володимирович">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="map"></div>
+<ul class="list-group" id="ls_deputat"></ul>
+<script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+  </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initMap" async defer></script>
+
+
+<script type="text/javascript">
+    $().ready(function() {
+        loadSelectRegione("#oblact","regione");
+        search();
+    });
+    
+    
+    
+</script>
