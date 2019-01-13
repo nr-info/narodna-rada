@@ -1,82 +1,51 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>osmolt Ergebnis</title>
+    <style type="text/css">
+      #map {
+        width: 100%;
+        height: 100%;
+        border: 0px;
+        padding: 0px;
+        position: absolute;
+      }
+      body {
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="../js/leaflet/leaflet.css" />
+    <script src="../js/leaflet/leaflet.js"></script>
+    <script src="../js/db/regione/maps/test.js"></script>
+    
+    
+  </head>
+  <body>  
+    <div id="map"></div>
+    <script type="text/javascript">
+        var osmL = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+            {
+                maxZoom: 25,
+                minZoom: 5,
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>, <a href="#win_form">АІТС ДРВ</a>'
+            });
 
-
-
-
-<section class="search-banner text-white py-3 form-arka-plan" id="search-banner">
-    <div class="container py-5 my-5">
-        <div class="row text-center pb-4">
-            <div class="col-md-12">
-                <h2 class="text-white siyah-cerceve">Kiralık Otobüs Ara, Firmalar, Araçlar</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card acik-renk-form">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="oblact">Область</label>
-                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="loadSelectR1(this)"></select>
-                                    <small id="emailHelp" class="form-text text-muted">Оберіть область</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="regione">Район</label>
-                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
-                                    <small id="emailHelp" class="form-text text-muted">Оберіть район</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="np">Населиний пункт</label>
-                                    <select id="np" class="form-control" data-s="3"></select>
-                                    <small id="emailHelp" class="form-text text-muted">Оберіть населений пункт</small>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="font-weight-light text-dark">Або ведіть П.І.Б депутата</p>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="form-group ">
-                                    <input type="text" id="deputat_search" class="form-control" placeholder="Наприклад: Стеценко Станіслав Володимирович">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<div id="map"></div>
-<ul class="list-group" id="ls_deputat"></ul>
-<script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
-  </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initMap" async defer></script>
-
-
-<script type="text/javascript">
-    $().ready(function() {
-        loadSelectRegione("#oblact","regione");
-        search();
+    var googleHybridLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 25,minZoom: 5,
+        subdomains:['mt0','mt1','mt2','mt3'],
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>, <a href="#win_form">АІТС ДРВ</a>'
     });
-    
-    
-    
-</script>
+
+    var map = L.map('map',{dragging:!L.Browser.mobile, touchZoom:L.Browser.mobile,layers:[osmL]});
+    var baseLayers = {
+        "Звичайна": osmL,
+        "Супутникова": googleHybridLayer
+      };
+    L.control.layers(baseLayers).addTo(map);
+        //var map = L.map('map').setView([51.505, -0.09], 13);
+    </script>
+  </body>
+</html>
