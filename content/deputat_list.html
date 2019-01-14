@@ -4,6 +4,7 @@
     }
 </style>
 <script type="text/javascript" src="js/db/regione/regione.js"></script>
+<script type="text/javascript" src="js/piechart.js"></script>
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
@@ -50,7 +51,7 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label for="regione">Округ</label>
-                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
+                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this);search()"></select>
                                     <small id="emailHelp" class="form-text text-muted">Оберіть Округ</small>
                                 </div>
                             </div>
@@ -180,6 +181,20 @@
                                 <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
                             </div>
                         </div>
+                        <p class="font-weight-light text-dark">Або ФРАКЦІЇ</p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group ">
+                                    <label for="regione">Округ</label>
+                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть Округ</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -194,7 +209,7 @@
     </div>
 </section>
 <div class="list-group container" id="ls_deputat"></div>
-
+<canvas id="myCanvas"></canvas>
 <script type="text/javascript">
     $().ready(function() {
         
@@ -218,6 +233,16 @@
         search(); 
         
     });
-    
-    
+    var myPiechart = new Piechart(
+        {
+            canvas: document.getElementById("myCanvas"),
+            data: {
+                "присутній": 464,
+                "відсутній з поважних причин": 0,
+                "відсутній з невідомих причин": 37,
+            },
+            colors:["#fde23e","#f16e23", "#57d9ff"]
+        }
+    );
+    myPiechart.draw();
 </script>
