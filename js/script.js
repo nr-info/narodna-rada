@@ -1,6 +1,6 @@
 function setMenuItems(loc){
     loadContent(".info","content/"+loc+".html");
-    return false;
+    return false;   
 }
 function loadContent(element, loc){
     $(element).load(loc);
@@ -32,36 +32,41 @@ function loadSelectR1(element){
 function search(){
     v2 = $("#regione").val();
     text = $("#deputat_search").val();
-    console.info(text);
+    
+    _location.setUrlParameters("regione",v2);
+    
     //var url = 'https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json';
     let url = 'db/deputat/mps-data.json';
+    
     $.getJSON(url, function (json) {
-        json = json.mps
-        var lsD = json;
-        if(v2 && text){
-            for (let key in json) {
-                b1 = true;
-                b2 = true;
-                if(v2){
-                    console.info(1);
-                    if(v2 == json[key].region_id){
-                        b1 = false;
-                    }
+        var lsD = json.mps
+        let key = 0;
+        while (key<lsD.length) {
+            console.info(lsD[key].id);
+            b1 = true;
+            b2 = true;
+            if(v2){
+                console.info(v2+" -- "+lsD[key].district_num);
+                if(v2 == lsD[key].district_num){
+                    b1 = false;
                 }
+            }
 
-                if(text){
-                    if(text == json[key].full_name){
-                        b2 = false;
-                    }
+            if(text){
+                console.info(text+" -- "+lsD[key].full_name);
+                if(text == lsD[key].full_name){
+                    b2 = false;
                 }
-                if (b1 && b2) {
-                    lsD.splice(key, 1);
-                }     
+            }
+            if (b1 && b2) {
+                lsD.splice(key, 1);
+            }else{
+                key++;
             }
         }
         
         var box_ls = $("#ls_deputat");
-        
+        box_ls.html("");
         for (let key in lsD) {
             
             let li1_files = "";
@@ -95,7 +100,27 @@ function search(){
 }
 
 function show_map() {        
-    $("#ls-maps div").hide()
-    $("#img-map"+$("#oblact").val()).show();
-}  
+    $("#ls-maps div").hide();
+    ob = $("#oblact").val();
+    $("#img-map"+ob).show();
+    var element = $("#regione");
+    element.empty();
+    
+    _location.setUrlParameters("oblact",ob);
+    ls = regioneJson.list[ob-1].okrug;
+    for (key in ls) {
+        element.append('<option value="'+ls[key]+'" selected>'+ls[key]+'</option>');  
+    }
+}
+
+function LoadSelectOkrug() {  
+    v1 = $("#oblact").val();
+    $.getJSON('js/db/regione/'+jsonFile+'.json', function (json) {
+        var element = $(elementName);
+        element.empty();
+        for (key in json.list) {
+            element.append('<option value="'+json.list[key].id+'" selected>'+json.list[key].name+'</option>');        
+        }
+    });
+}
 

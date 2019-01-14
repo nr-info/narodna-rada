@@ -3,6 +3,7 @@
         max-width: 100%;
     }
 </style>
+<script type="text/javascript" src="js/db/regione/regione.js"></script>
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
@@ -196,8 +197,26 @@
 
 <script type="text/javascript">
     $().ready(function() {
-        search();
-        show_map()
+        
+        var oblart = _location.getUrlParameters("oblact");
+        if(oblart){
+            $("#oblact").val(oblart);
+        }
+        
+        var deputat_search = _location.getUrlParameters("deputat_search");
+        if(deputat_search){
+            $("#deputat_search").val(regione);
+        }
+        
+        show_map();
+        
+        var regione = _location.getUrlParameters("regione");
+        if(regione){
+            $("#regione").val(regione);
+        }
+        
+        search(); 
+        
     });
     
     
