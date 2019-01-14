@@ -94,3 +94,8 @@ function search(){
     
 }
 
+function show_map() {        
+    $("#ls-maps div").hide()
+    $("#img-map"+$("#oblact").val()).show();
+}  
+

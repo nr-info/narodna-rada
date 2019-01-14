@@ -1,18 +1,11 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
-
+<style type="text/css">
+    .img1{
+        max-width: 100%;
+    }
+</style>
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
-        <!-- div class="row text-center pb-4">
-            <div class="col-md-12">
-                <h2 class="text-white siyah-cerceve">Kiralık Otobüs Ara, Firmalar, Araçlar</h2>
-            </div>
-        </div -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card acik-renk-form">
@@ -21,24 +14,159 @@
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <label for="oblact">Область</label>
-                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="loadSelectR1(this)"></select>
+                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="show_map()">
+                                        <option value="1" selected="">Автономна Республіка Крим</option>
+                                        <option value="2" selected="">Вінницька область</option>
+                                        <option value="3" selected="">Волинська область</option>
+                                        <option value="4" selected="">Дніпропетровська область</option>
+                                        <option value="5" selected="">Донецька область</option>
+                                        <option value="6" selected="">Житомирська область</option>
+                                        <option value="7" selected="">Закарпатська область</option>
+                                        <option value="8" selected="">Запорізька область</option>
+                                        <option value="9" selected="">Івано-Франківська область</option>
+                                        <option value="10" selected="">Київська область</option>
+                                        <option value="11" selected="">Кіровоградська область</option>
+                                        <option value="12" selected="">Луганська область</option>
+                                        <option value="13" selected="">Львівська область</option>                                        
+                                        <option value="14" selected="">Миколаївська область</option>
+                                        <option value="15" selected="">Одеська область</option>
+                                        <option value="16" selected="">Полтавська область</option>
+                                        <option value="17" selected="">Рівненська область</option>
+                                        <option value="18" selected="">Сумська область</option>
+                                        <option value="19" selected="">Тернопільська область</option>
+                                        <option value="20" selected="">Харківська область</option>
+                                        <option value="21" selected="">Херсонська область</option>
+                                        <option value="22" selected="">Хмельницька область</option>
+                                        <option value="23" selected="">Черкаська область</option>
+                                        <option value="24" selected="">Чернівецька область</option>
+                                        <option value="25" selected="">Чернігівська область</option>                                        
+                                        <option value="26" selected="">м.&nbsp;Київ</option>
+                                        <option value="27" selected="">м.&nbsp;Севастополь</option>
+                                    </select>
                                     <small id="emailHelp" class="form-text text-muted">Оберіть область</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="regione">Район</label>
+                                    <label for="regione">Округ</label>
                                     <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this)"></select>
-                                    <small id="emailHelp" class="form-text text-muted">Оберіть район</small>
+                                    <small id="emailHelp" class="form-text text-muted">Оберіть Округ</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="np">Населиний пункт</label>
-                                    <select id="np" class="form-control" data-s="3"></select>
-                                    <small id="emailHelp" class="form-text text-muted">Оберіть населений пункт</small>
-                                </div>
+                        </div>
+                        <div class="row" id="ls-maps">
+                            
+                            <div id="img-map1">
+                                <img src="content/deputat_list/1.PNG" class="img img1">
                             </div>
+                            
+                            <div  id="img-map2">
+                                <img src="content/deputat_list/2.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map3">
+                                <img src="content/deputat_list/3.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map4">
+                                <img src="content/deputat_list/4.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map5">
+                                <img src="content/deputat_list/5.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map6">
+                                <img src="content/deputat_list/6.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map7">
+                                <img src="content/deputat_list/7.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map8">
+                                <img src="content/deputat_list/8.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map9">
+                                <img src="content/deputat_list/9.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map10">
+                                <img src="content/deputat_list/10.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map11">
+                                <img src="content/deputat_list/11.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map12">
+                                <img src="content/deputat_list/12.PNG" class="img img1">
+                                <img src="content/deputat_list/12_1.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map13">
+                                <img src="content/deputat_list/13.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map14">
+                                <img src="content/deputat_list/14.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map15">
+                                <img src="content/deputat_list/15.PNG" class="img img1">
+                                <img src="content/deputat_list/15_1.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map16">
+                                <img src="content/deputat_list/16.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map17">
+                                <img src="content/deputat_list/17.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map18">
+                                <img src="content/deputat_list/18.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map19">
+                                <img src="content/deputat_list/19.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map20">
+                                <img src="content/deputat_list/20.PNG" class="img img1">
+                                <img src="content/deputat_list/20_1.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map21">
+                                <img src="content/deputat_list/21.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map22">
+                                <img src="content/deputat_list/22.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map23">
+                                <img src="content/deputat_list/23.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map24">
+                                <img src="content/deputat_list/24.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map25">
+                                <img src="content/deputat_list/25.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map26">
+                                <img src="content/deputat_list/26.PNG" class="img img1">
+                            </div>
+                            
+                            <div  id="img-map27">
+                                <img src="content/deputat_list/27.PNG" class="img img1">
+                            </div>
+                            
                         </div>
                         <p class="font-weight-light text-dark">Або ведіть П.І.Б депутата</p>
                         <div class="row">
@@ -55,32 +183,22 @@
                 </div>
             </div>
         </div>
+        <!--
         <div class="row">
             <div class="col-12">
                 <div id="map"></div>
             </div>
         </div>
+        -->
     </div>
 </section>
 <div class="list-group container" id="ls_deputat"></div>
-<script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
-  </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYQirnjdwXAj0qArcVThgNeylYpuhGwhM&callback=initMap" async defer></script>
-
 
 <script type="text/javascript">
     $().ready(function() {
-        loadSelectRegione("#oblact","regione");
         search();
+        show_map()
     });
-    
     
     
 </script>
