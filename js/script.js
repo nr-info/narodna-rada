@@ -30,8 +30,8 @@ function loadSelectR1(element){
 }
 
 function search(){
-    v2 = $("#regione").val();
-    text = $("#deputat_search").val();
+    let v2 = $("#regione").val();
+    let text = $("#deputat_search").val();
     
     _location.setUrlParameters("regione",v2);
     
@@ -43,8 +43,8 @@ function search(){
         let key = 0;
         while (key<lsD.length) {
             //console.info(lsD[key].id);
-            b1 = true;
-            b2 = true;
+            let b1 = true;
+            let b2 = true;
             if(v2){
                 //console.info(v2+" -- "+lsD[key].district_num);
                 if(v2 == lsD[key].district_num){
@@ -76,6 +76,7 @@ function search(){
 //                                    <img src="/img/file/'+json.list[key].files[key].type+'.png" alt="'+json.list[key1].name+'" class="img-responsive img-circle" /></a>'
 //            }
             // Інфографіку додавати сюди
+            console.log(lsD[key])
             box_ls.append('<div class="list-group-item row">\n\
                         <div class="col-md-3 col-sm-12"  style="float: left;">\n\
                             <div class="image-holder">\n\
@@ -88,10 +89,15 @@ function search(){
                             <span class="name">'+lsD[key].obr_info +'</span><br/>\n\
                         </div>\n\
                         <div class="clearfix" style="float: none;"></div>\n\
-                        <div class="col-12">\n\
-                            <!-- Інфографіку додавати сюди --!>\n\
+                        <div class="col-12" style="margin: .3rem auto;">\n\
+                            <a href="http://itd.rada.gov.ua/mps/info/page/' + lsD[key].id + '" target="_blank">\n\
+                                <img src="./content/deputat_list/vr.png" alt="" style="width: 100%;">\n\
+                            </a>\n\
+                        </div>\n\
+                        <!--div class="col-12">\n\
+                            <Інфографіку додавати сюди>\n\
                             <div> Infographics should be placed here </div>\n\
-                        <\div>\n\
+                        <\div --!>\n\
                     </div>');
         }
             

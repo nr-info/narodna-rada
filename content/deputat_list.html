@@ -2,185 +2,208 @@
     .img1{
         max-width: 100%;
     }
+    .image-holder{
+
+    }
+    .deputy-image{
+
+    }
 </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript" src="js/db/regione/regione.js"></script>
 <script type="text/javascript" src="js/piechart.js"></script>
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
         <div class="row">
+            <!--<div class="col-sm-12 col-md">
+                <a href="https://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&prejim=3" target="_blank">
+                    <img src="" alt="" style="width: 100%;">
+                </a>
+            </div>-->
             <div class="col-md-12">
                 <div class="card acik-renk-form">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group ">
-                                    <label for="oblact">Область</label>
-                                    <select id="oblact" class="form-control" aria-describedby="emailHelp" data-s="1" onchange="show_map()">
-                                        <option value="1"  selected="">Автономна Республіка Крим</option>
-                                        <option value="2">Вінницька область</option>
-                                        <option value="3">Волинська область</option>
-                                        <option value="4">Дніпропетровська область</option>
-                                        <option value="5">Донецька область</option>
-                                        <option value="6">Житомирська область</option>
-                                        <option value="7">Закарпатська область</option>
-                                        <option value="8">Запорізька область</option>
-                                        <option value="9">Івано-Франківська область</option>
-                                        <option value="10">Київська область</option>
-                                        <option value="11">Кіровоградська область</option>
-                                        <option value="12">Луганська область</option>
-                                        <option value="13">Львівська область</option>                                        
-                                        <option value="14">Миколаївська область</option>
-                                        <option value="15">Одеська область</option>
-                                        <option value="16">Полтавська область</option>
-                                        <option value="17">Рівненська область</option>
-                                        <option value="18">Сумська область</option>
-                                        <option value="19">Тернопільська область</option>
-                                        <option value="20">Харківська область</option>
-                                        <option value="21">Херсонська область</option>
-                                        <option value="22">Хмельницька область</option>
-                                        <option value="23">Черкаська область</option>
-                                        <option value="24">Чернівецька область</option>
-                                        <option value="25">Чернігівська область</option>                                        
-                                        <option value="26">м.&nbsp;Київ</option>
-                                        <option value="27">м.&nbsp;Севастополь</option>
+                                    <!--<label for="oblact">Область</label>-->
+                                    <select id="oblact" class="form-control"
+                                            aria-describedby="emailHelp" data-s="1" onchange="show_map()">
+                                        <option value="1" selected="">Автономна Республіка Крим</option>
+                                        <option value="2" selected="">Вінницька область</option>
+                                        <option value="3" selected="">Волинська область</option>
+                                        <option value="4" selected="">Дніпропетровська область</option>
+                                        <option value="5" selected="">Донецька область</option>
+                                        <option value="6" selected="">Житомирська область</option>
+                                        <option value="7" selected="">Закарпатська область</option>
+                                        <option value="8" selected="">Запорізька область</option>
+                                        <option value="9" selected="">Івано-Франківська область</option>
+                                        <option value="10" selected="">Київська область</option>
+                                        <option value="11" selected="">Кіровоградська область</option>
+                                        <option value="12" selected="">Луганська область</option>
+                                        <option value="13" selected="">Львівська область</option>                                        
+                                        <option value="14" selected="">Миколаївська область</option>
+                                        <option value="15" selected="">Одеська область</option>
+                                        <option value="16" selected="">Полтавська область</option>
+                                        <option value="17" selected="">Рівненська область</option>
+                                        <option value="18" selected="">Сумська область</option>
+                                        <option value="19" selected="">Тернопільська область</option>
+                                        <option value="20" selected="">Харківська область</option>
+                                        <option value="21" selected="">Херсонська область</option>
+                                        <option value="22" selected="">Хмельницька область</option>
+                                        <option value="23" selected="">Черкаська область</option>
+                                        <option value="24" selected="">Чернівецька область</option>
+                                        <option value="25" selected="">Чернігівська область</option>                                        
+                                        <option value="26" selected="">м.&nbsp;Київ</option>
+                                        <option value="27" selected="">м.&nbsp;Севастополь</option>
                                     </select>
                                     <small id="emailHelp" class="form-text text-muted">Оберіть область</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <label for="regione">Округ</label>
-                                    <select id="regione" class="form-control" data-s="2" onchange="loadSelectR1(this);search()"></select>
+                            <div class="col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <!--<label for="regione">Округ</label>-->
+                                    <select id="regione" class="form-control" data-s="2"
+                                            onchange="loadSelectR1(this);search()"></select>
                                     <small id="emailHelp" class="form-text text-muted">Оберіть Округ</small>
                                 </div>
                             </div>
+                            <div class="col-md-3 col-sm-12" style="color: black;">
+                                <a href="https://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&prejim=3"
+                                   style="color: black;" target="_blank">
+                                    Чи не можете знайти свою ділянку?
+                                    <img src="./content/deputat_list/drv.png" width="60px" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <div class="row" id="ls-maps">                            
+                        <!-- div class="row" id="ls-maps">
+
                             <div id="img-map1">
                                 <img src="content/deputat_list/1.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map2">
                                 <img src="content/deputat_list/2.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map3">
                                 <img src="content/deputat_list/3.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map4">
                                 <img src="content/deputat_list/4.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map5">
                                 <img src="content/deputat_list/5.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map6">
                                 <img src="content/deputat_list/6.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map7">
                                 <img src="content/deputat_list/7.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map8">
                                 <img src="content/deputat_list/8.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map9">
                                 <img src="content/deputat_list/9.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map10">
                                 <img src="content/deputat_list/10.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map11">
                                 <img src="content/deputat_list/11.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map12">
                                 <img src="content/deputat_list/12.PNG" class="img img1">
                                 <img src="content/deputat_list/12_1.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map13">
                                 <img src="content/deputat_list/13.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map14">
                                 <img src="content/deputat_list/14.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map15">
                                 <img src="content/deputat_list/15.PNG" class="img img1">
                                 <img src="content/deputat_list/15_1.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map16">
                                 <img src="content/deputat_list/16.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map17">
                                 <img src="content/deputat_list/17.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map18">
                                 <img src="content/deputat_list/18.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map19">
                                 <img src="content/deputat_list/19.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map20">
                                 <img src="content/deputat_list/20.PNG" class="img img1">
                                 <img src="content/deputat_list/20_1.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map21">
                                 <img src="content/deputat_list/21.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map22">
                                 <img src="content/deputat_list/22.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map23">
                                 <img src="content/deputat_list/23.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map24">
                                 <img src="content/deputat_list/24.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map25">
                                 <img src="content/deputat_list/25.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map26">
                                 <img src="content/deputat_list/26.PNG" class="img img1">
                             </div>
-                            
+
                             <div  id="img-map27">
                                 <img src="content/deputat_list/27.PNG" class="img img1">
                             </div>
-                            <small><a href="https://www.drv.gov.ua/portal/!cm_core.cm_index?option=ext_dvk&prejim=3" target="__blank">Дані взяті з ДЕРЖАВНО РЕЄСТР ВИБОРЦІВ</a></small>
-                        </div>
+
+                        </div> -->
                         <p class="font-weight-light text-dark">Або ведіть П.І.Б депутата</p>
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-12">
                                 <div class="form-group ">
                                     <input type="text" id="deputat_search" class="form-control" placeholder="Наприклад: Стеценко Станіслав Володимирович">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-12">
                                 <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
                             </div>
                         </div>
-                        <p class="font-weight-light text-dark">Або ФРАКЦІЇ</p>
+                        <!--<p class="font-weight-light text-dark">Або ФРАКЦІЇ</p>
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group ">
@@ -192,7 +215,7 @@
                             <div class="col-md-3">
                                 <button type="button" class="btn btn-warning  pl-5 pr-5" onclick="search()">Пошук</button>
                             </div>
-                        </div>
+                        </div>-->
                         
                     </div>
                 </div>
@@ -207,10 +230,35 @@
         -->
     </div>
 </section>
-<div class="list-group container" id="ls_deputat"></div>
-<canvas id="myCanvas"></canvas>
+<div class="list-group container" id="ls_deputat">
+
+</div>
+<!--<canvas id="myCanvas"></canvas>-->
+<hr>
+<div>
+    Якщо Вам не подобається робота Вашого депутата
+<p>
+    <p>
+        <a href="./content/sho_robyti/deputatu.odt" download>Завантажити звернення в форматі ODT</a>
+    </p>
+    <p>
+        <a href="./content/sho_robyti/депутату.pdf" download>Завантажити звернення в форматі PDF</a>
+    </p>
+    <p style="color:red">
+        Увага! Після отримання відповіді, поділіться результатом у Народній Раді, зробив  копію,
+        за винятком Ваших персональних даних
+    </p>
+</p>
+<h5>Відправте йому повідомлення – чому він так працює</h5>
+</div>
+<hr>
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7vDhHmkIrV8" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+</div>
 <script type="text/javascript">
-    $().ready(function() {
+    $(document).ready(function() {
         
         var oblart = _location.getUrlParameters("oblact");
         if(oblart){
@@ -228,11 +276,12 @@
         if(regione){
             $("#regione").val(regione);
         }
-        
+        $('#oblact').select2();
+
         search(); 
         
     });
-    var myPiechart = new Piechart(
+    /*var myPiechart = new Piechart(
         {
             canvas: document.getElementById("myCanvas"),
             data: {
@@ -243,5 +292,5 @@
             colors:["#fde23e","#f16e23", "#57d9ff"]
         }
     );
-    myPiechart.draw();
+    myPiechart.draw();*/
 </script>
