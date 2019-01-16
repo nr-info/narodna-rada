@@ -14,7 +14,6 @@
     <script type="text/javascript" src="js/lacationLib.js"></script>
     <script type="text/javascript" src="js/data_rada_gov_ua.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta http-equiv="cache-control" content="max-age=0">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0" />
@@ -35,16 +34,13 @@
     </div>
 </div>
 <script type="text/javascript">
-    var urlGlobalParameter;
     var _location = new lacationLib();
     $().ready(function() {
         loadContent(".toolbar.row","tmp/social_networks.html");
         loadContent(".sidebar","tmp/menu_left.html");
         loadContent(".footer","tmp/footer.html");
         
-        urlGlobalParameter = new URL(location);
-        var z = urlGlobalParameter.searchParams.get("v");
-        urlGlobalParameter.searchParams
+        var z = _location.getUrlParameters("v");
         if(!z){
             z = "home";
         }
