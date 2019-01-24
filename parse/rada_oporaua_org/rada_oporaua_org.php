@@ -1,20 +1,20 @@
 <?php
 require_once('parse/core.php');
 
-class slovoidilo{
+class rada_oporaua_org{
 
     const BAZE_URI = "https://rada.oporaua.org";
     
-    const URL_Google_form = '1ieD9s-EhipkM0O6_3IP6STzPwXHjgVe-dfkjWPsa-sI';
+    const URL_Google_form = '';
     
-    public function list_deputats(){
+    public function list_deputats($page = "/deputaty/deputati"){
         
         set_time_limit(50000);
             
-        $dat = getPageQuery(static::BAZE_URI. "/rejtyngy/verhovna-rada/za-vidpovidalnistju");
+        $dat = getPageQuery(static::BAZE_URI. $page);
         
-        $lis = $dat->find(".rating-list.pr-responsibility .item.person a.name");
-
+        $lis = $dat->find(".photo-gallery__item a");
+        
         $data = [];
         
         foreach ($lis as $li) {
@@ -42,14 +42,18 @@ class slovoidilo{
             
         $dat = getPageQuery($data['entry.1546363445']);
             
-        $amm = $dat->find(".amounts");
+        $deputy = $dat->find("div.deputy.clear");
         
-        $data['entry.1514254136'] = $amm->find(".perform")->text();
-        $data['entry.260377466'] = $amm->find(".succeed")->text();
-        $data['entry.1815471178'] = $amm->find(".failed")->text();
-        $data['entry.224492135'] = $amm->find(".all")->text();
-            
-        $this->push_form($data);
+        
+        //Голосування (пленарні засідання):
+        $data['golosyvanja']['za'] = $deputy->find(".deputy__voting-item.deputy__voting-item_1.font a")->text();
+        $data['golosyvanja']['proty'] = $deputy->find(".deputy__voting-item.deputy__voting-item_2.font a")->text();
+        $data['golosyvanja']['utrymavsya'] = $deputy->find(".deputy__voting-item.deputy__voting-item_3.font a")->text();
+        $data['golosyvanja']['vidsutniy'] = $deputy->find(".deputy__voting-item.deputy__voting-item_4.font a")->text();
+        $data['golosyvanja']['negolosuvav'] = $deputy->find(".deputy__voting-item.deputy__voting-item_5.font a")->text();
+        
+        print_r($data);
+        //$this->push_form($data);
     }
     
     public function push_forms($data){

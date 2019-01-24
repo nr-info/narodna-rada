@@ -1,17 +1,17 @@
 <?php
 require_once('parse/core.php');
 
-class slovoidilo{
+class slovoidilo_ua{
 
     const BAZE_URI = "https://www.slovoidilo.ua";
     
     const URL_Google_form = '1ieD9s-EhipkM0O6_3IP6STzPwXHjgVe-dfkjWPsa-sI';
     
-    public function list_deputats(){
+    public function list_deputats($page = "/rejtyngy/verhovna-rada"){
         
         set_time_limit(50000);
             
-        $dat = getPageQuery(static::BAZE_URI. "/rejtyngy/verhovna-rada/za-vidpovidalnistju");
+        $dat = getPageQuery(static::BAZE_URI. $page);
         
         $lis = $dat->find(".rating-list.pr-responsibility .item.person a.name");
 
