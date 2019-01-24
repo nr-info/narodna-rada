@@ -3,7 +3,7 @@ require_once('parse/core.php');
 
 class slovoidilo{
 
-    const BAZE_URI = "https://www.slovoidilo.ua";
+    const BAZE_URI = "https://rada.oporaua.org";
     
     const URL_Google_form = '1ieD9s-EhipkM0O6_3IP6STzPwXHjgVe-dfkjWPsa-sI';
     

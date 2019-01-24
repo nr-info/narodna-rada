@@ -150,8 +150,3 @@ function LoadSelectOkrug() {
         }
     });
 }
-
-
-function () {  
-    
-}
