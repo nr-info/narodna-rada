@@ -15,6 +15,8 @@ $rada_oporaua_org = new rada_oporaua_org();
 
 $w1_c1_rada_gov_ua = new w1_c1_rada_gov_ua();
 
-$w1_c1_rada_gov_ua->Voting_startDate = '27.08.2018';
+$w1_c1_rada_gov_ua->Voting_startDate = '27.11.2014';
 $w1_c1_rada_gov_ua->Voting_endDate = date('d-m-Y');
 $list = $w1_c1_rada_gov_ua->json_list_deputats();
+
+file_put_contents("test.json", json_encode($list));

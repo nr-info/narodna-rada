@@ -107,13 +107,12 @@ class w1_c1_rada_gov_ua{
         $data["voting"]['against'] = 0;
         $data["voting"]['missing'] = 0;
         $data["voting"]['abstained'] = 0;//Утримався
-
         
         $lsis = $datVoting->find(".zrez");
         
         foreach ($lsis as $value) {
-            $v = trim(pq($value)->text());
             
+            $v = trim(pq($value)->text());
             
             if ($v == "За" || $v == "Çà") {
                 $data["voting"]['by']++;
@@ -131,11 +130,6 @@ class w1_c1_rada_gov_ua{
         
         //======================================================================
        
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        
-        die;
         //$this->push_form($data);
     }
     
