@@ -1,11 +1,24 @@
-version: '3'
+version: '2'
+
 services:
-  app:
-    build: ./docker
-    volumes:
-      - .:/usr/share/nginx/html/
-      - ./docker/default.conf:/etc/nginx/conf.d/default.conf
-    working_dir: /usr/share/nginx/html/
+  web:
+    image: nginx:latest
     ports:
-      - "80:80"
-    command: /bin/bash -c "exec nginx -g 'daemon off;'"
+      - "8080:80"
+    volumes:
+      - ./:/code
+      - ./docker/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - code-network
+  php:
+    build: 
+      dockerfile: Dockerfile
+      context: ./docker
+    volumes:
+      - ./:/code
+    networks:
+      - code-network
+
+networks:
+  code-network:
+    driver: bridge
