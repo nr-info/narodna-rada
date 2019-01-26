@@ -17,22 +17,16 @@
 </style>
 
 <script type="text/javascript" src="js/db/regione/regione.js"></script>
-<script type="text/javascript" src="js/db/deputat/mps08-data.js"></script>
+<script type="text/javascript" src="db/search_deputats.js"></script>
 
 
-<link href="../system/vendor/magicsuggest-master/magicsuggest.css" rel="stylesheet" type="text/css"/>
-<script src="../system/vendor/magicsuggest-master/magicsuggest.js" type="text/javascript"></script>
 
-<script src="../system/vendor/select2-4.0.6-rc.1/dist/js/select2.full.js" type="text/javascript"></script>
-<link href="../system/vendor/select2-4.0.6-rc.1/dist/css/select2.css" rel="stylesheet" type="text/css"/>
-<!--
-<h3>
-    Виборчі округи та дільниці
-</h3>
-<div style="border:1px solid;padding:8px;box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius:20px">
-    <img style="vertical-align:middle;margin:8px;max-width:100%;height:auto;" src="content/deputat_list/drv.png">
-    <span style="font-size:x-large;white-space:nowrap;">Офіційний веб-сайт</span>
-</div>-->
+
+<link href="system/vendor/magicsuggest-master/magicsuggest.css" rel="stylesheet" type="text/css"/>
+<script src="system/vendor/magicsuggest-master/magicsuggest.js" type="text/javascript"></script>
+
+<script src="system/vendor/select2-4.0.6-rc.1/dist/js/select2.full.js" type="text/javascript"></script>
+<link href="system/vendor/select2-4.0.6-rc.1/dist/css/select2.css" rel="stylesheet" type="text/css"/>
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
@@ -142,8 +136,8 @@
     $(document).ready(function() {        
                 
         var sel = $('#deputat_search');
-        for(key in list_deputats){
-            sel.append('<option value="'+list_deputats[key].full_name+'">'+list_deputats[key].full_name+'</option>');
+        for(key in list_deputats.mps){
+            sel.append('<option value="'+list_deputats.mps[key].full_name+'">'+list_deputats.mps[key].full_name+'</option>');
         }
         
         var deputat_search = _location.getUrlParameters("deputat_search");
@@ -181,6 +175,44 @@
         if(deputat_search){
             searchText();
         }
-        
+        new Chart(
+                document.getElementById("myChart"),
+         
+                {
+                    "type":"doughnut",
+                    "data":
+                            {
+                                "labels":["присутній","відсутній з поважних причин","відсутній з невідомих причин"],
+                                "datasets":[
+                                    {
+                                        "label":"My First Dataset",
+                                        "data":[300,50,100],
+                                        "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]
+                                    }
+                                ]
+                            }
+                }
+        );
     });
+    
+    
+</script>
+<canvas id="myChart"></canvas>
+
+<script type="text/javascript">
+   
+    /*
+    var myPiechart = new Piechart(
+        {
+            canvas: document.getElementById("myCanvas"),
+            data: {
+                "присутній": 464,
+                "відсутній з поважних причин": 0,
+                "відсутній з невідомих причин": 37,
+            },
+            colors:["#ff0000","#ff0000", "#ff0000"]
+        }
+    );
+    myPiechart.draw();
+    */
 </script>

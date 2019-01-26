@@ -45,7 +45,7 @@ function searchText(){
     
     let key = 0;
     
-    var lsD = Object.assign([],list_deputats);
+    var lsD = Object.assign([],list_deputats.mps);
     
     while (key<lsD.length) {
         let b1 = true;
@@ -73,7 +73,7 @@ function searchOkrug(){
     
     let key = 0;
     
-    var lsD = Object.assign([],list_deputats);
+    var lsD = Object.assign([],list_deputats.mps);
     
     while (key<lsD.length) {
         let b1 = true;
@@ -97,31 +97,42 @@ function search(lsD){
     box_ls.html("");
     
     for (let key in lsD) {
-
-        let li1_files = "";
-
-        box_ls.append('<div class="list-group-item row">\n\
+        
+        $.get("db/deputat1/"+lsD[key].id+".json",function(json){
+            var full_name = json.surname + " " + json.firstname + " " + json.patronymic;
+            
+            box_ls.append('<div class="list-group-item row">\n\
                     <div class="col-md-3 col-sm-12"  style="float: left;">\n\
                         <div class="image-holder">\n\
-                            <img src="'+lsD[key].photo+'" alt="'+lsD[key].full_name+'" \n\
+                            <img src="'+json.photo+'" alt="'+full_name+'" \n\
                             class="img-responsive img-circle">\n\
                         </div>\n\
                     </div>\n\
                     <div class="col-md-9 col-sm-12">\n\
-                        <span class="name"><a href="http://itd.rada.gov.ua/mps/info/page/' + lsD[key].id + '" target="_blank">'+lsD[key].full_name +'</span></a><br/>\n\
-                        <span class="name">'+lsD[key].anketa_data +'</span><br/>\n\
+                        <span class="name"><a href="http://itd.rada.gov.ua/mps/info/page/' + json.id + '" target="_blank">'+full_name +'</span></a><br/>\n\
+                        <span class="name">'+json.short_info +'</span><br/>\n\
                     </div>\n\
                     <div class="clearfix" style="float: none;"></div>\n\
+                    <div class="row">\n\
+                        <div class="col-12 col-md-4"><canvas id="info_grafic_' + json.id + '_1"></canvas><a href="#">Запитати у дипутата де він був?</a></div>\n\
+                        <div class="col-12 col-md-4"><canvas id="info_grafic_' + json.id + '_2"></canvas></div>\n\
+                        <div class="col-12 col-md-4"><canvas id="info_grafic_' + json.id + '_3"></canvas><small></small>ОБІЦЯНКИ</div>\n\
+                    <\div>\n\
                     <div class="col-12" style="margin: .3rem auto;">\n\
-                        <a href="http://itd.rada.gov.ua/mps/info/page/' + lsD[key].id + '" target="_blank">\n\
+                        <a href="http://itd.rada.gov.ua/mps/info/page/' + json.id + '" target="_blank">\n\
                             <img src="./content/deputat_list/vr.png" alt="" style="width: 100%;">\n\
                         </a>\n\
                     </div>\n\
-                    <!--div class="col-12">\n\
-                        <Інфографіку додавати сюди>\n\
-                        <div> Infographics should be placed here </div>\n\
-                    <\div --!>\n\
+                    <script type="text/javascript">ChartVisiting("info_grafic_' + json.id + '_1",' + json.visiting.present + ',' + json.visiting.reasons_valide + ',' + json.visiting.reasons_unknown + ');</script>\n\
+                    <script type="text/javascript">ChartVoting("info_grafic_' + json.id + '_2",' + 
+                    json.voting.by + ',' + 
+                    json.voting.no_vote + ',' + 
+                    json.voting.against + ',' + 
+                    json.voting.missing + ',' + 
+                    json.voting.abstained + ');</script>\n\
                 </div>');
+        });
+        
     }
 }
 
@@ -149,4 +160,44 @@ function LoadSelectOkrug() {
             element.append('<option value="'+json.list[key].id+'" selected>'+json.list[key].name+'</option>');        
         }
     });
+}
+
+function ChartVisiting(canvas,q,w,e){
+    new Chart(
+            document.getElementById(canvas).getContext("2d"),         
+            {
+                "type":"doughnut",
+                "data":
+                        {
+                            "labels":["присутній","відсутній з поважних причин","відсутній з невідомих причин"],
+                            "datasets":[
+                                {
+                                    "label":"My First Dataset",
+                                    "data":[q,w,e,],
+                                    "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]
+                                }
+                            ]
+                        }
+            }
+    );
+}
+
+function ChartVoting(canvas,q,w,e,r,t){
+    new Chart(
+            document.getElementById(canvas).getContext("2d"),         
+            {
+                "type":"doughnut",
+                "data":
+                        {
+                            "labels":["За","Не голосував","Проти","Відсутній","Утримався"],
+                            "datasets":[
+                                {
+                                    "label":"My First Dataset",
+                                    "data":[q,w,e,r,t],
+                                    "backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)","rgb(255, 0, 86)","rgb(0, 205, 86)"]
+                                }
+                            ]
+                        }
+            }
+    );
 }
