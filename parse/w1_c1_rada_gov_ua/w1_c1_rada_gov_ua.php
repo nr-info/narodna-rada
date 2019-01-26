@@ -58,8 +58,7 @@ class w1_c1_rada_gov_ua extends parser
         
         $this->console_info("Start parse deputat " . $data["id"] );
         
-        $_time_1 = microtime(true);       
-        
+        $_time_1 = microtime(true);
         
         //Visiting
         //======================================================================
@@ -71,7 +70,7 @@ class w1_c1_rada_gov_ua extends parser
         $_time_ = microtime(true) - $_time_;
         $this->console_info("			time - [".(string)$_time_."]");
         
-        $box_visiting = $dat->find('.mp-general-info')->parent();        
+        $box_visiting = $dat->find('.mp-general-info')->parent();
         
         $html1 = trim($box_visiting->html());
         
@@ -84,6 +83,9 @@ class w1_c1_rada_gov_ua extends parser
                 break;
             }
         }
+        
+        $data["voting"]["date"] = $this->Voting_endDate;
+        $data["voting"]["source"] = $this->BAZE_URI;
         
         if ($summ) {
             $ls = explode(",", $summ);
@@ -123,6 +125,9 @@ class w1_c1_rada_gov_ua extends parser
         $data["voting"]['missing'] = 0;     //Відсутній
         $data["voting"]['abstained'] = 0;   //Утримався
         
+        $data["voting"]["date"] = $this->Voting_endDate;
+        $data["voting"]["source"] = $this->BAZE_URI;
+        
         $lsis = $datVoting->find(".zrez");
         
         foreach ($lsis as $value) {
@@ -149,7 +154,8 @@ class w1_c1_rada_gov_ua extends parser
         $this->console_info("	push_file");
         $this->push_file("db/deputat1/".$data["id"].".json", json_encode($data,JSON_UNESCAPED_UNICODE));
         $_time_1 = microtime(true) - $_time_1;
-        $this->console_info("			time - [".(string)$_time_1."]");
+        $this->console_info("time - [".(string)$_time_1."]");
+        
     }
     
     public function getSkl8_mps_data() {

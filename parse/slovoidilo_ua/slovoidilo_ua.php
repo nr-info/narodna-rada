@@ -13,10 +13,8 @@ class slovoidilo_ua extends parser
     }
     
     public function list_deputats($page = "/rejtyngy/verhovna-rada"){
-        
-        set_time_limit(50000);
             
-        $dat = getPageQuery($page);
+        $dat = $this->getPageQuery($page);
         
         $lis = $dat->find(".rating-list.pr-responsibility .item.person a.name");
 
@@ -48,6 +46,16 @@ class slovoidilo_ua extends parser
         $dat = getPageQuery($data['entry.1546363445']);
             
         $amm = $dat->find(".amounts");
+        
+        $data['entry.1751437528'] = '';//П.І.Б
+        $data['entry.1514254136'] = '';//У процесі
+        $data['entry.260377466'] = '';//Виконано
+        $data['entry.1815471178'] = '';//Не виконано
+        $data['entry.224492135'] = '';//Всього
+        $data['entry.957555455'] = '';//%
+        $data['entry.1546363445'] = '';//силка
+
+
         
         $data['entry.1514254136'] = $amm->find(".perform")->text();
         $data['entry.260377466'] = $amm->find(".succeed")->text();

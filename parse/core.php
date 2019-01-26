@@ -62,9 +62,9 @@ class parser{
         file_get_contents('https://docs.google.com/forms/d/'. $this->URL_Google_form.'/formResponse?submit=Submit&'.http_build_query($data));        
     }
     
-    public function pars_prameters_google_forms($url){
+    public function pars_prameters_google_forms(){
         
-        $dat = $this->getPageQuery($url);
+        $dat = $this->getPageQuery('https://docs.google.com/forms/d/'. $this->URL_Google_form.'/formResponse');
         
         $lis = $dat->find("form input");
         
@@ -73,7 +73,7 @@ class parser{
             $el = pq($li);
             
             if ($el->attr('aria-label')) {
-                echo '$data[\''.$el->attr('name').'\'] = \'\';\\\\'.$el->attr('aria-label').PHP_EOL;
+                echo '$data[\''.$el->attr('name').'\'] = \'\';//'.$el->attr('aria-label').PHP_EOL;
             }            
             
         }
@@ -88,37 +88,5 @@ class parser{
     public function console_info($text){
         echo $text.PHP_EOL;
     }
-    
-    public function unicode_to_utf8($unicode) {
-		$string = '';
-
-		for ($i = 0; $i < count($unicode); $i++) {
-			if ($unicode[$i] < 128) {
-				$string .= chr($unicode[$i]);
-			}
-
-			if ($unicode[$i] >= 128 && $unicode[$i] <= 2047) {
-				$string .= chr(($unicode[$i] / 64) + 192) . chr(($unicode[$i] % 64) + 128);
-			}
-
-			if ($unicode[$i] >= 2048 && $unicode[$i] <= 65535) {
-				$string .= chr(($unicode[$i] / 4096) + 224) . chr(128 + (($unicode[$i] / 64) % 64)) . chr(($unicode[$i] % 64) + 128);
-			}
-
-			if ($unicode[$i] >= 65536 && $unicode[$i] <= 2097151) {
-				$string .= chr(($unicode[$i] / 262144) + 240) . chr((($unicode[$i] / 4096) % 64) + 128) . chr((($unicode[$i] / 64) % 64) + 128) . chr(($unicode[$i] % 64) + 128);
-			}
-
-			if ($unicode[$i] >= 2097152 && $unicode[$i] <= 67108863) {
-				$string  .= chr(($unicode[$i] / 16777216) + 248) . chr((($unicode[$i] / 262144) % 64) + 128) . chr((($unicode[$i] / 4096) % 64) + 128) . chr((($unicode[$i] / 64) % 64) + 128) . chr(($unicode[$i] % 64) + 128);
-			}
-
-			if ($unicode[$i] >= 67108864 && $unicode[$i] <= 2147483647) {
-				$string .= chr(($unicode[$i] / 1073741824) + 252) . chr((($unicode[$i] / 16777216) % 64) + 128) . chr((($unicode[$i] / 262144) % 64) + 128) . chr(128 + (($unicode[$i] / 4096) % 64)) . chr((($unicode[$i] / 64) % 64) + 128) . chr(($unicode[$i] % 64) + 128);
-			}
-		}
-
-		return $string;
-	}
     
 }
