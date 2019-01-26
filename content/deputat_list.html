@@ -2,11 +2,17 @@
     .img1{
         max-width: 100%;
     }
-    .image-holder{
-
+    .list-group-item{
+        margin-left: 0;
     }
-    .deputy-image{
-
+    .info-banner{
+        background-color: #dddddd;
+        border-radius: 1rem;
+        min-height: 7rem;
+        position: relative;
+    }
+    .info-banner-content{
+        margin: auto;
     }
 </style>
 
@@ -14,16 +20,24 @@
 <script type="text/javascript" src="js/db/deputat/mps08-data.js"></script>
 
 
-<link href="../system/vendor1/magicsuggest-master/magicsuggest.css" rel="stylesheet" type="text/css"/>
-<script src="../system/vendor1/magicsuggest-master/magicsuggest.js" type="text/javascript"></script>
+<link href="../system/vendor/magicsuggest-master/magicsuggest.css" rel="stylesheet" type="text/css"/>
+<script src="../system/vendor/magicsuggest-master/magicsuggest.js" type="text/javascript"></script>
 
-<script src="../system/vendor1/select2-4.0.6-rc.1/dist/js/select2.full.js" type="text/javascript"></script>
-<link href="../system/vendor1/select2-4.0.6-rc.1/dist/css/select2.css" rel="stylesheet" type="text/css"/>
-
+<script src="../system/vendor/select2-4.0.6-rc.1/dist/js/select2.full.js" type="text/javascript"></script>
+<link href="../system/vendor/select2-4.0.6-rc.1/dist/css/select2.css" rel="stylesheet" type="text/css"/>
+<!--
+<h3>
+    Виборчі округи та дільниці
+</h3>
+<div style="border:1px solid;padding:8px;box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius:20px">
+    <img style="vertical-align:middle;margin:8px;max-width:100%;height:auto;" src="content/deputat_list/drv.png">
+    <span style="font-size:x-large;white-space:nowrap;">Офіційний веб-сайт</span>
+</div>-->
 
 <section class="search-banner text-white form-arka-plan" id="search-banner">
     <div class="container">
-        <div class="row">
+        <div class="row" style="color: black;">
+            
             <div class="col-md-12">
                 <div class="card acik-renk-form">
                     <div class="card-body">
@@ -91,36 +105,38 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <a href="https://voxukraine.org/ipr/index.html?filter=all" target="_blank">ККД депутата: як оцінити внесок кожного обранця у підтримку реформ</a>  
+            <div class="col-md-12">
+                <a href="https://voxukraine.org/ipr/index.html?filter=all" target="_blank">ККД депутата: як оцінити внесок кожного обранця у підтримку реформ</a>
+            </div>
+            <div class="col-md-12">
+                <div class="list-group container" id="ls_deputat"></div>
+                <hr>
+                <div>
+                    Якщо Вам не подобається робота Вашого депутата
+                    <p>
+                    <p>
+                        <a href="./content/sho_robyti/deputatu.odt" download>Завантажити звернення в форматі ODT</a>
+                    </p>
+                    <p>
+                        <a href="./content/sho_robyti/депутату.pdf" download>Завантажити звернення в форматі PDF</a>
+                    </p>
+                    <p style="color:red">
+                        Увага! Після отримання відповіді, поділіться результатом у Народній Раді, зробив  копію,
+                        за винятком Ваших персональних даних
+                    </p>
+                    </p>
+                    <h5>Відправте йому повідомлення – чому він так працює</h5>
+                </div>
+                <hr>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7vDhHmkIrV8" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<div class="list-group container" id="ls_deputat"></div>
-<hr>
-<div>
-    Якщо Вам не подобається робота Вашого депутата
-<p>
-    <p>
-        <a href="./content/sho_robyti/deputatu.odt" download>Завантажити звернення в форматі ODT</a>
-    </p>
-    <p>
-        <a href="./content/sho_robyti/депутату.pdf" download>Завантажити звернення в форматі PDF</a>
-    </p>
-    <p style="color:red">
-        Увага! Після отримання відповіді, поділіться результатом у Народній Раді, зробив  копію,
-        за винятком Ваших персональних даних
-    </p>
-</p>
-<h5>Відправте йому повідомлення – чому він так працює</h5>
-</div>
-<hr>
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7vDhHmkIrV8" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-</div>
 <script type="text/javascript">
     
     $(document).ready(function() {        
@@ -162,16 +178,9 @@
         
         $('#deputat_search').select2();
         
-        
-        
-        
-        
         if(deputat_search){
             searchText();
         }
-        
-        
-        
         
     });
 </script>

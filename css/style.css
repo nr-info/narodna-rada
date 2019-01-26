@@ -13,29 +13,29 @@ a:focus{
     outline: none;
 }
 .logo{
-    width: 100%;
+    max-width: 100%;
+    max-height: 200px;
 }
-@media (min-width: 576px){
-    .sidebar{
-        border-right: 1px solid #202020;
-    }
-}
-.sidebar{
+.menu{
     margin: 1rem auto 0 auto;
     padding-right: .4rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
 }
-.sidebar-info{
-    background-color: #60603060;
-    margin: .5rem auto;
+.menu-info{
+    background-color: #0395ff;
+    margin: .5rem .3rem;
     color: black;
     transition: .2s linear;
-    padding-left: .3rem;
-    padding-right: .3rem;
+    padding: .7rem .3rem;
 }
-.sidebar-info:hover{
-    background-color: white;
+.menu-info:first-of-type {
+    margin-left: 0;
 }
-.sidebar-info a{
+.menu-info:hover{
+    background-color: yellow;
+}
+.menu-info a{
     color: inherit;
 }
 .header{
@@ -46,7 +46,6 @@ a:focus{
 }
 .toolbar{
     margin: 1rem 0;
-    border-bottom: 1px solid #202020;
     text-align: right;
     padding-top: .6rem;
     padding-bottom: .6rem;
@@ -60,7 +59,9 @@ a:focus{
     text-decoration: none;
 }
 .toolbar-icon{
-    height: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    width: 2rem;
 }
 .footer{
     margin-top: 1rem	;
