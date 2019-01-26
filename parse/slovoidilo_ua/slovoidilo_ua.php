@@ -1,17 +1,22 @@
 <?php
 require_once('parse/core.php');
 
-class slovoidilo_ua{
-
-    const BAZE_URI = "https://www.slovoidilo.ua";
+class slovoidilo_ua extends parser
+{
     
-    const URL_Google_form = '1ieD9s-EhipkM0O6_3IP6STzPwXHjgVe-dfkjWPsa-sI';
+    public function __construct() {
+        
+        $this->BAZE_URI = "https://www.slovoidilo.ua";
+        
+        $this->URL_Google_form = '1ieD9s-EhipkM0O6_3IP6STzPwXHjgVe-dfkjWPsa-sI';
+        
+    }
     
     public function list_deputats($page = "/rejtyngy/verhovna-rada"){
         
         set_time_limit(50000);
             
-        $dat = getPageQuery(static::BAZE_URI. $page);
+        $dat = getPageQuery($page);
         
         $lis = $dat->find(".rating-list.pr-responsibility .item.person a.name");
 
@@ -58,10 +63,6 @@ class slovoidilo_ua{
             $this->push_form($value);            
         }
         
-    }
-    
-    public function push_form($data){
-        file_get_contents('https://docs.google.com/forms/d/'.static::URL_Google_form.'/formResponse?submit=Submit&'.http_build_query($data));        
     }
     
 }

@@ -1,7 +1,7 @@
 <?php
 require_once('parse/core.php');
 
-class rada_oporaua_org{
+class rada_oporaua_org extends parser{
 
     const BAZE_URI = "https://rada.oporaua.org";
     
@@ -53,7 +53,6 @@ class rada_oporaua_org{
         $data['golosyvanja']['negolosuvav'] = $deputy->find(".deputy__voting-item.deputy__voting-item_5.font a")->text();
         
         print_r($data);
-        //$this->push_form($data);
     }
     
     public function push_forms($data){
@@ -62,10 +61,6 @@ class rada_oporaua_org{
             $this->push_form($value);            
         }
         
-    }
-    
-    public function push_form($data){
-        file_get_contents('https://docs.google.com/forms/d/'.static::URL_Google_form.'/formResponse?submit=Submit&'.http_build_query($data));        
     }
     
 }

@@ -1,21 +1,22 @@
 <?php
 require_once('parse/core.php');
 
-class w1_c1_rada_gov_ua{
-
-    const BAZE_URI = "http://w1.c1.rada.gov.ua";
-    
-    const URL_Google_form = '';
+class w1_c1_rada_gov_ua extends parser
+{
     
     public $Voting_startDate;
     public $Voting_endDate;
 
-
+    public function __construct() {
+        
+        $this->BAZE_URI = "http://w1.c1.rada.gov.ua";
+        
+    }
 
     public function pars_list_deputats($skl = 9) {
         
-        $dat = getPageQuery(static::BAZE_URI. '/pls/site2/fetch_mps?skl_id=' .$skl);
-        //http://w1.c1.rada.gov.ua/pls/site2/fetch_mps?skl_id=9
+        $dat = $this->getPageQuery('/pls/site2/fetch_mps?skl_id=' .$skl);
+        
         $lis = $dat->find(".search-filter-results.search-filter-results-thumbnails li .title a");
         
         $data = [];
@@ -43,26 +44,32 @@ class w1_c1_rada_gov_ua{
         
         $data = [];
         
-        foreach ($lis as $li) {
+        foreach ($lis as $key=>$li) {
             
             $li["anketa_url"] = "http://itd.rada.gov.ua/mps/info/page/". $li["id"];
             
             $this->deputat($li);
             
-            $data[] = $li;
-            
         }
-        
-        return $data;
         
     }
     
-    public function deputat(&$data){
-                    
-        $dat = getPageQuery($data['anketa_url']);
+    public function deputat($data){
         
-        //visiting
+        $this->console_info("Start parse deputat " . $data["id"] );
+        
+        $_time_1 = microtime(true);       
+        
+        
+        //Visiting
         //======================================================================
+        $this->console_info("	Visiting");
+        $this->console_info("		getPage");
+        $_time_ = microtime(true);
+        
+        $dat = $this->getPageQuery($data['anketa_url']);
+        $_time_ = microtime(true) - $_time_;
+        $this->console_info("			time - [".(string)$_time_."]");
         
         $box_visiting = $dat->find('.mp-general-info')->parent();        
         
@@ -89,24 +96,32 @@ class w1_c1_rada_gov_ua{
             $data['visiting']['reasons_valide'] = 0;
             $data['visiting']['reasons_unknown'] = 0;
         }
-            
+        
+        $this->console_info("			[".$data["visiting"]['present'].", ".$data["visiting"]['reasons_valide'].", ".$data["visiting"]['reasons_unknown']."]");
+        
         //======================================================================
+        
         
         //Voting
         //======================================================================
+        $this->console_info("	Voting");
         
-        $datVoting = getPageQuery("http://w1.c1.rada.gov.ua/pls/radan_gs09/ns_dep_gol_list?startDate={$this->Voting_startDate}&endDate={$this->Voting_endDate}&kod={$data["rada_id"]}&nom_str=0");
+        $this->Voting_startDate = (new DateTime($data["date_oath"]))->format('d.m.Y');
         
-//        За - By
-//        Не голосував - No vote
-//        Проти - Against
-//        Відсутній - Missing
+        $this->console_info("		getPage");
         
-        $data["voting"]['by'] = 0;
-        $data["voting"]['no_vote'] = 0;
-        $data["voting"]['against'] = 0;
-        $data["voting"]['missing'] = 0;
-        $data["voting"]['abstained'] = 0;//Утримався
+        $_time_ = microtime(true);
+        $datVoting = $this->getPageQuery("http://w1.c1.rada.gov.ua/pls/radan_gs09/ns_dep_gol_list?startDate={$this->Voting_startDate}&endDate={$this->Voting_endDate}&kod={$data["rada_id"]}&nom_str=0");
+        $_time_ = microtime(true) - $_time_;
+        $this->console_info("			time - [".(string)$_time_."]");
+        
+        
+        
+        $data["voting"]['by'] = 0;          //За
+        $data["voting"]['no_vote'] = 0;     //Не голосував
+        $data["voting"]['against'] = 0;     //Проти
+        $data["voting"]['missing'] = 0;     //Відсутній
+        $data["voting"]['abstained'] = 0;   //Утримався
         
         $lsis = $datVoting->find(".zrez");
         
@@ -128,29 +143,20 @@ class w1_c1_rada_gov_ua{
             
         }
         
+        $this->console_info("			[".$data["voting"]['by'].", ".$data["voting"]['no_vote'].", ".$data["voting"]['against'].", ".$data["voting"]['missing'].", ".$data["voting"]['abstained']."]");
+        
         //======================================================================
-       
-        //$this->push_form($data);
+        $this->console_info("	push_file");
+        $this->push_file("db/deputat1/".$data["id"].".json", json_encode($data,JSON_UNESCAPED_UNICODE));
+        $_time_1 = microtime(true) - $_time_1;
+        $this->console_info("			time - [".(string)$_time_1."]");
     }
-    
-    public function push_forms($data){
-        
-        foreach ($data as $value) {
-            $this->push_form($value);            
-        }
-        
-    }
-    
-    public function push_form($data){
-        file_get_contents('https://docs.google.com/forms/d/'.static::URL_Google_form.'/formResponse?submit=Submit&'.http_build_query($data));        
-    }
-    
     
     public function getSkl8_mps_data() {
         
         $data = [];
         
-        $textData = getPage('http://mytry.loc/db/deputat/mps-data.json');//"https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json"
+        $textData = $this->file_get_contentsA1('http://mytry.loc/db/deputat/mps-data.json');//"https://data.rada.gov.ua/ogd/mps/skl8/mps-data.json"
         
         if($textData){
             try {
