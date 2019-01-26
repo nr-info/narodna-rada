@@ -19,6 +19,36 @@ services:
     networks:
       - code-network
 
+  mysqldb:
+    image: mysql:5.7
+    container_name: nr-mysql1
+    restart: always
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: nrada
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ${MYSQL_PASS}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+      DB_PORT: 3306
+      DB_HOST: 127.0.0.1
+    ports:
+      - "33062:3306"
+    networks:
+      - code-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysqldb
+    environment:
+      PMA_HOST: mysqldb
+      PMA_PORT: 3306
+    ports:
+      - '8088:80'
+    networks:
+      - code-network
+
 networks:
   code-network:
     driver: bridge
