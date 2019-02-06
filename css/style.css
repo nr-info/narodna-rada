@@ -1,91 +1,74 @@
-/* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-#map{
-    min-height: 30rem;
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000050;
 }
-/* Optional: Makes the sample page fill the window. */
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+hr {
+height:1px; border:none; color:#000; background-color:#000;
 }
-a:focus{
-    outline: none;
+#responsiv {
+	margin: 0 auto;
+	padding: 0;
+	height: 100%;
+	max-width: 1000px;
 }
-.logo{
-    max-width: 100%;
-    max-height: 200px;
+#responsiv > table {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
 }
-.menu{
-    margin: 1rem auto 0 auto;
-    padding-right: .4rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid black;
+#responsiv > table td {
+	margin: 0;
+	padding: 8px;
+	vertical-align: top;
+	/*border: 1px solid black;*/
 }
-.menu-info{
-    background-color: #0395ff;
-    margin: .5rem .3rem;
-    color: black;
-    transition: .2s linear;
-    padding: .7rem .3rem;
+#head {
+	position: relative;
 }
-.menu-info:first-of-type {
-    margin-left: 0;
+#logo {
+	display: block;
+	text-align: center;
 }
-.menu-info:hover{
-    background-color: yellow;
+#logo > a {
+    display: inline-block;
+	text-decoration: none;
 }
-.menu-info a{
-    color: inherit;
+#logo > a > img {
+	max-width: 200px;
+	vertical-align: top;
 }
-.header{
-    text-align: center;
-    margin: 1rem auto;
-    height: 2rem;
-    font-weight: bold !important;
-}
-.toolbar{
-    margin: 1rem 0;
+#lozung {
+	display: block;
+	margin-bottom: 8px;
+	white-space: nowrap;
     text-align: right;
-    padding-top: .6rem;
-    padding-bottom: .6rem;
-    overflow: hidden;
-    width: 100%;
 }
-.toolbar-element{
-    margin: auto .3rem;
+#networks {
+	display: block;
+    text-align: right;
+    float: right;
 }
-.toolbar-element:hover{
-    text-decoration: none;
+#networks > a {
+	display: inline-block;
+	margin: 5px;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
 }
-.toolbar-icon{
-    max-width: 100%;
-    max-height: 100%;
-    width: 2rem;
+#networks > a > img {
+	vertical-align: top;
+	max-width: 40px;
+	border-radius: 10px;
 }
-.footer{
-    margin-top: 1rem	;
-    border-top: 1px solid #202020;
-    text-align: left;
-    padding-top: .6rem;
-    padding-bottom: .6rem;
-    overflow: hidden;
+tfoot, thead {
+	height: 1%;
 }
-.footer-element{
-    margin: auto .3rem;
-}
-.footer-element:hover{
-    text-decoration: none;
-}
-.footer-icon{
-    height: 20px;
-}
-.info {
-    margin: 2rem auto;
-    min-height: calc(100vh - 13rem);
-    max-width: 100%;
-    max-height: 100%;
-}
+
 .video-container {
     position:relative;
     padding-bottom:56.25%;
@@ -93,7 +76,6 @@ a:focus{
     height:0;
     overflow:hidden;
 }
-
 .video-container iframe, .video-container object, .video-container embed {
     position:absolute;
     top:0;
@@ -101,6 +83,15 @@ a:focus{
     width:100%;
     height:100%;
 }
-.search-banner{
-    padding-bottom: 1rem;
-}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,0 @@
-section,element,format,attributes,annotation
-,dictionary,array,"name:string,[source:string]","Довідник бази даних з назвою name, таблиця бази даних – source."
-dictionary,item,object,"id:integer","Елемент довідника dictionary з ідентифікатором id. Тип комплексний."
-item,id,integer,"index:boolean,[field:string]","Ідентифікатор запису довідника, поле з таблиці бази даних – field, ознака index – що це ключове поле, за яким можна шукати. Тип – число."
-item,"name{1,}",string,"[lang:string],[field:string]","Назва запису довідника. Можна вказати мову lang, якщо довідник багатомовний. Тип – рядок."
-item,"value{0,}",variant,"name:string,[reference:string],[refId:integer],[field:string]","Будь-яке значення поля field з іменем name, можливе посилання на інший довідник reference за ідентифікатором refId. Тип – довільний."
